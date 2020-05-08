@@ -334,7 +334,7 @@ After reboot, there will be no driver blocking the usb bus anymore, so we can fi
 
 ### Which Node.js versions are supported?
 
-@pokusew/pcsclite officially supports the following Node.js versions: **8.x, 9.x, 10.x, 11.x, 12.x, 13.x**.
+@pokusew/pcsclite officially supports the following Node.js versions: **8.x, 9.x, 10.x, 11.x, 12.x, 13.x, 14.x**.
 
 ### Can I use this library in my React Native app?
 
