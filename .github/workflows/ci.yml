@@ -1,26 +1,44 @@
+#
+# GitHub Actions Workflow
+#   reference: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
+#
+#   useful example: https://github.com/mikeal/bundle-size-action/blob/master/.github/workflows/mikeals-workflow.yml
+#
+
 name: CI
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 jobs:
+
   build:
 
     runs-on: ${{ matrix.os }}
+
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-        node: [8.x, 10.x, 12.x, 13.x, 14.x]
+        os: [ ubuntu-latest, windows-latest, macOS-latest ]
+        node-version: [ 8.x, 10.x, 12.x, 13.x, 14.x, 16.x, 18.x, 20.x ]
+
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+
+      # https://github.com/actions/checkout
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        # https://github.com/actions/setup-node
+        uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
+          node-version: ${{ matrix.node-version }}
+
       - name: Install pcsclite
         run: sudo apt-get install -y libpcsclite1 libpcsclite-dev pcscd
         if: matrix.os == 'ubuntu-latest'
+
       - name: Compile
         run: npm install --verbose
+
       - name: Run tests
         run: npm test
         # TODO: enable once tests do not get stuck on Windows
