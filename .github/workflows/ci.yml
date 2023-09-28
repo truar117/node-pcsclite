@@ -20,6 +20,26 @@ jobs:
       matrix:
         os: [ ubuntu-latest, windows-latest, macOS-latest ]
         node-version: [ 8.x, 10.x, 12.x, 13.x, 14.x, 16.x, 18.x, 20.x ]
+        exclude:
+          # exclude Node.js 8.x on ubuntu-latest
+          # node-gyp fails during in gyp's Python code:
+          #   AttributeError: module 'collections' has no attribute 'MutableSet'
+          # TODO: try to fix
+          - os: ubuntu-latest
+            node-version: 8.x
+          # temporarily exclude Node.js 8.x-14.x on windows-latest
+          # node-gyp cannot find compatible Microsoft Visual Studio
+          # TODO: try to fix (install manually an older MVS)
+          - os: windows-latest
+            node-version: 8.x
+          - os: windows-latest
+            node-version: 10.x
+          - os: windows-latest
+            node-version: 12.x
+          - os: windows-latest
+            node-version: 13.x
+          - os: windows-latest
+            node-version: 14.x
 
     steps:
 
