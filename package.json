@@ -33,6 +33,15 @@
   "directories": {
     "test": "test"
   },
+  "files": [
+    "lib/pcsclite.js",
+    "src/*.h",
+    "src/*.cpp",
+    "examples/*.js",
+    "test/*.js",
+    "binding.gyp",
+    "index.d.ts"
+  ],
   "scripts": {
     "install": "node-gyp rebuild",
     "test": "mocha --exit"
