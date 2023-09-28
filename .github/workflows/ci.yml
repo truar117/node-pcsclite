@@ -42,4 +42,5 @@ jobs:
       - name: Run tests
         run: npm test
         # TODO: enable once tests do not get stuck on Windows
-        if: matrix.os != 'windows-latest'
+        # Mocha and Sinon.JS support only Node.js >=14.x
+        if: matrix.os != 'windows-latest' && contains(fromJSON('["14.x", "16.x", "18.x", "20.x"]'), matrix.node-version)
