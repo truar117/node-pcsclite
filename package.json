@@ -44,7 +44,13 @@
   ],
   "scripts": {
     "install": "node-gyp rebuild",
-    "test": "mocha --exit"
+    "test": "mocha --exit",
+    "artifactory:login": "npm run artifactory:login:switch && npm run artifactory:login:plusng_main && npm run artifactory:login:plusng_release && npm run artifactory:login:plusng_dev",
+    "artifactory:login:switch": "npm login --registry https://artifacts.i.mercedes-benz.com/artifactory/api/npm/switch-main-npm-releases/",
+    "artifactory:login:plusng_main": "npm login --registry https://artifacts.i.mercedes-benz.com/artifactory/api/npm/plusng-main-npm-local/",
+    "artifactory:login:plusng_dev": "npm login --registry https://artifacts.i.mercedes-benz.com/artifactory/api/npm/plusng-dev-npm-local/",
+    "artifactory:login:plusng_release": "npm login --registry https://artifacts.i.mercedes-benz.com/artifactory/api/npm/plusng-release-npm-local/",
+    "release:publish:dev": "node-gyp rebuild && npm publish --@plusng:registry=https://artifacts.i.mercedes-benz.com/artifactory/api/npm/plusng-dev-npm-local/"
   },
   "dependencies": {
     "nan": "^2.18.0"
