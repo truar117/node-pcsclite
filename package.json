@@ -1,6 +1,6 @@
 {
-  "name": "@plusng/electron-plugin-pcsclite",
-  "version": "0.6.1",
+  "name": "electron-plugin-pcsclite",
+  "version": "0.6.4",
   "description": "Bindings over PC/SC to access Smart Cards",
   "keywords": [
     "nfc",
@@ -45,12 +45,9 @@
   "scripts": {
     "install": "node-gyp rebuild",
     "test": "mocha --exit",
-    "artifactory:login": "npm run artifactory:login:switch && npm run artifactory:login:plusng_main && npm run artifactory:login:plusng_release && npm run artifactory:login:plusng_dev",
-    "artifactory:login:switch": "npm login --registry https://artifacts.i.mercedes-benz.com/artifactory/api/npm/switch-main-npm-releases/",
+    "artifactory:login": "npm run artifactory:login:plusng_main",
     "artifactory:login:plusng_main": "npm login --registry https://artifacts.i.mercedes-benz.com/artifactory/api/npm/plusng-main-npm-local/",
-    "artifactory:login:plusng_dev": "npm login --registry https://artifacts.i.mercedes-benz.com/artifactory/api/npm/plusng-dev-npm-local/",
-    "artifactory:login:plusng_release": "npm login --registry https://artifacts.i.mercedes-benz.com/artifactory/api/npm/plusng-release-npm-local/",
-    "release:publish:dev": "node-gyp rebuild && npm publish --@plusng:registry=https://artifacts.i.mercedes-benz.com/artifactory/api/npm/plusng-dev-npm-local/"
+    "release:publish": "node-gyp rebuild && npm publish --registry=https://artifacts.i.mercedes-benz.com/artifactory/api/npm/plusng-main-npm-local/"
   },
   "publishConfig": {
     "@plusng:registry": "https://artifacts.i.mercedes-benz.com/artifactory/api/npm/plusng-main-npm-local/"
