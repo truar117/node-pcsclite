@@ -1,6 +1,6 @@
 {
-  "name": "electron-plugin-pcsclite",
-  "version": "0.6.4",
+  "name": "@plusng/electron-plugin-node-pcsclite",
+  "version": "0.6.5",
   "description": "Bindings over PC/SC to access Smart Cards",
   "keywords": [
     "nfc",
